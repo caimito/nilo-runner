@@ -54,7 +54,7 @@ download_binary() {
 
 get_binary_url() {
   local arch="$1"
-  echo "https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/gh-pages/downloads/${BINARY_NAME}-${arch}"
+  echo "https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/dist/downloads/${BINARY_NAME}-${arch}"
 }
 
   if [[ -n "$asset_url" ]]; then
