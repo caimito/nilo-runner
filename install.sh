@@ -10,7 +10,6 @@ GITHUB_REPO="nilo-runner"
 BINARY_NAME="nilo-runner-linux"
 INSTALL_DIR="/usr/local/bin"
 DATA_DIR="/var/lib/nilo-runner"
-VERSION="latest"
 
 log_info() {
   echo "[INFO] $*"
@@ -53,31 +52,10 @@ download_binary() {
   fi
 }
 
-get_latest_release_url() {
+get_binary_url() {
   local arch="$1"
-  local api_url="https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/${VERSION}"
-
-  log_info "Looking up latest release from GitHub"
-
-  local release_json
-  if command -v curl >/dev/null 2>&1; then
-    release_json=$(curl -fsSL "$api_url" 2>/dev/null || true)
-  elif command -v wget >/dev/null 2>&1; then
-    release_json=$(wget -qO- "$api_url" 2>/dev/null || true)
-  fi
-
-  if [[ -z "$release_json" ]]; then
-    return 1
-  fi
-
-  local asset_url
-  asset_url=$(echo "$release_json" | awk '
-    /"browser_download_url"/ {
-      gsub(/.*"browser_download_url": "/, "")
-      gsub(/".*/, "")
-      print
-    }
-  ' | grep "${BINARY_NAME}-${arch}" | head -n1)
+  echo "https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/gh-pages/downloads/${BINARY_NAME}-${arch}"
+}
 
   if [[ -n "$asset_url" ]]; then
     echo "$asset_url"
@@ -135,13 +113,8 @@ log_info "Device name: $DEVICE_NAME"
 ARCH=$(detect_arch)
 log_info "Detected architecture: $ARCH"
 
-# Determine binary URL
-if DOWNLOAD_URL=$(get_latest_release_url "$ARCH"); then
-  log_info "Found release binary URL"
-else
-  log_error "Could not find release binary. Ensure a GitHub release exists with asset '${BINARY_NAME}-${ARCH}'."
-  exit 1
-fi
+DOWNLOAD_URL=$(get_binary_url "$ARCH")
+log_info "Binary URL: $DOWNLOAD_URL"
 
 TMP_DIR=$(mktemp -d)
 trap 'rm -rf "$TMP_DIR"' EXIT
