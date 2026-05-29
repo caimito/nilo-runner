@@ -4,10 +4,6 @@ set -euo pipefail
 
 # Nilo Linux Runner installer
 # Usage: curl -sfL https://raw.githubusercontent.com/caimito/nilo-runner/main/install.sh | sudo bash
-#
-# This script downloads and installs the Nilo Linux Runner from the public
-# distribution repository. The runner binaries are published there so users
-# can install without needing access to the private source repository.
 
 GITHUB_OWNER="caimito"
 GITHUB_REPO="nilo-runner"

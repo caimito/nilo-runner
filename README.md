@@ -1,6 +1,6 @@
 # Nilo Runner
 
-Public distribution repository for the Nilo Linux Runner.
+Public distribution for the Nilo Linux Runner.
 
 ## Quick Install
 
@@ -32,8 +32,8 @@ chmod +x /usr/local/bin/nilo-runner-linux
 
 ## What is Nilo Runner?
 
-The Nilo Linux Runner is a lightweight Go daemon that connects a Linux machine to [Nilo Assistant](https://niloassistant.com), enabling local LLM execution and job processing. It runs as a systemd service and communicates with Nilo via WebSocket.
+The Nilo Linux Runner is a lightweight daemon that connects a Linux machine to [Nilo Assistant](https://niloassistant.com), enabling local LLM execution and job processing. It runs as a systemd service and communicates with Nilo via WebSocket.
 
-## Source Code
+## Support
 
-The runner source code is maintained in the private [caimito/nilo-assistant](https://github.com/caimito/nilo-assistant) repository. This public repository only distributes pre-built binaries and the install script.
+For support, contact your Nilo representative or visit [niloassistant.com](https://niloassistant.com).
