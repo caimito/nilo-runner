@@ -21,11 +21,11 @@ This will:
 ```bash
 # amd64
 curl -fsSL -o /usr/local/bin/nilo-runner-linux \
-  https://raw.githubusercontent.com/caimito/nilo-runner/dist/downloads/nilo-runner-linux-amd64
+  https://github.com/caimito/nilo-runner/releases/download/latest/nilo-runner-linux-amd64
 
 # arm64
 curl -fsSL -o /usr/local/bin/nilo-runner-linux \
-  https://raw.githubusercontent.com/caimito/nilo-runner/dist/downloads/nilo-runner-linux-arm64
+  https://github.com/caimito/nilo-runner/releases/download/latest/nilo-runner-linux-arm64
 
 chmod +x /usr/local/bin/nilo-runner-linux
 ```
