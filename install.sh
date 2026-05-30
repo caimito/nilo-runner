@@ -57,14 +57,6 @@ get_binary_url() {
   echo "https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/dist/downloads/${BINARY_NAME}-${arch}"
 }
 
-  if [[ -n "$asset_url" ]]; then
-    echo "$asset_url"
-    return 0
-  fi
-
-  return 1
-}
-
 prompt_required() {
   local prompt_text="$1"
   local value=""
